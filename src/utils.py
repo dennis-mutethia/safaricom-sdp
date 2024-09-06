@@ -32,7 +32,7 @@ class Utils:
         }
 
         try:
-            body_string = input_stream.read().decode('utf-8')
+            body_string = input_stream.read().decode('utf-8') # type: ignore
         except Exception:
             body_string = ''
 
