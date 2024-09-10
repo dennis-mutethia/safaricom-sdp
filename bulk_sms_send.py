@@ -14,7 +14,8 @@ try:
     sdp = SDP()
 
     # By default, SDP will use sandbox APIs. Call use_live() method to use production APIs.
-    sdp.use_live().init()
+    #sdp.use_live().init()
+    sdp.init()
 
     # Instantiate the BulkSMS class and pass the SDP instance
     bulk_sms = BulkSMS(sdp)

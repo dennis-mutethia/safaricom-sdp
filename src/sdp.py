@@ -36,11 +36,8 @@ class SDP:
 
         self.link_id = None
         self.cp_username = None
-        
-        self.request = Request(self.base_url)
-        self.token = self.generate_token(self.api_username, self.api_password)
-        self.request.response_body = None  # Reset the response body
-           
+        self.token = None
+        self.request = None
 
     def use_live(self):
         """
@@ -56,7 +53,18 @@ class SDP:
         :return: self
         """
         self.base_url = self.sandbox_base_url
-        return self        
+        return self
+
+    def init(self):
+        """
+        Initialize the app by setting the token.
+
+        :return: self
+        :raises SDPException: If token generation fails
+        """
+        self.request = Request(self.base_url)
+        self.token = self.generate_token(self.api_username, self.api_password)
+        self.request.response_body = None  # Reset the response body
 
     def generate_token(self, username, password):
         """

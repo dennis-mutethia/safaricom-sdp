@@ -42,7 +42,5 @@ class BulkSMS:
         }
 
         response = self.SDP.request.request("post", "public/CMS/bulksms", self.SDP.token, body)
-        
-        print(str(response["data"]))
-        
+                
         return Utils.get_response(response)
