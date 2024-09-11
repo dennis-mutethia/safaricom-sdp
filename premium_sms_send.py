@@ -18,7 +18,7 @@ try:
     request_id = "1234"  # Generate an ID for tracking/logging purposes
     offer_code = "23456"  # The service for which the SMS is being sent
     link_id = "233348438989"  # ID generated when a user requests a service in SDP
-    phone_number = "254712345678"  # The phone number of the user to receive the message
+    phone_number = "254759697757"  # The phone number of the user to receive the message
     message = "This is a test message"
 
     response = premium_sms.send_sms(request_id, offer_code, link_id, phone_number, message)
@@ -36,6 +36,7 @@ try:
                 print(response['data']['responseParam']['description'])
         else:
             # No response param sent back. Handle this for tracking
+            print(str(response))
             print("Seems the response hasn't been sent. Best to assume the SMS failed to send.")
     else:
         # Failed to send the request, possibly due to network, authentication, authorization errors

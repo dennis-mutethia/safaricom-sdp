@@ -14,18 +14,18 @@ try:
     sdp = SDP()
 
     # By default, SDP will use sandbox APIs. Call use_live() method to use production APIs.
-    #sdp.use_live().init()
-    sdp.init()
+    sdp.use_live().init()
+    #sdp.init()
 
     # Instantiate the BulkSMS class and pass the SDP instance
     bulk_sms = BulkSMS(sdp)
 
     # Send SMS
     request_id = "1234"  # Generate an ID for tracking/logging purposes
-    username = ""  # Username allocated by SDP after successful registration
+    username = os.getenv('API_USERNAME')  # Username allocated by SDP after successful registration
     package_id = ""  # Campaign package ID issued upon successful registration
-    originating_address = ""  # Originating address assigned to partner
-    recipients = ["723345678", "789923456", "790987342"]
+    originating_address = "test"  # Originating address assigned to partner
+    recipients = ["254759697757"]
     message = "This is a bulk SMS"
     callback = os.getenv('BULK_SMS_CALLBACK_URL')
 
@@ -40,6 +40,7 @@ try:
                 print("Messages successfully dispatched to SDP")
             else:
                 # Error dispatching bulk SMS to SDP/Safaricom
+                print(str(response))
                 print(f"Failed to dispatch bulk SMS. Response code: {response['data']['statusCode']}")
         else:
             # No response param sent back. Handle this for tracking
